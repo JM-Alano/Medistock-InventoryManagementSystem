@@ -10,6 +10,7 @@
             <div class="bg-secondary-light overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     {{ __("You're logged in! ") }}
+                    {{ __("JENMAR ALANO") }}
                 </div>
             </div>
         </div>

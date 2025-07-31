@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\MedicineController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -10,9 +11,9 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-Route::get('/medicine', function (){
-    return view('medicine');
-})->middleware(['auth', 'verified'])->name('medicine');
+
+Route::get('/medicine', [MedicineController::class, 'index'])->middleware(['auth', 'verified'])->name('medicine');
+
 Route::get('/batch-inventory', function (){
     return view('batch-inventory');
 })->middleware(['auth', 'verified'])->name('batch-inventory');
