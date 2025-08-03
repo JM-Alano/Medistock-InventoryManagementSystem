@@ -3,7 +3,7 @@
                             <x-application-logo class="block h-12 w-auto mb-6" />
                      </div>
                     <hr class="mb-6 border-gray-200">
-
+    
    <ul class="space-y-6 text-md px-4 py-2 text-text-light">
     <li>
         <a href="{{ route('dashboard') }}"
@@ -78,6 +78,7 @@
     </li>
 
     <li>
+      
         <a href="{{ route('report') }}"
            class="flex items-center gap-3 hover:text-orange-300 transition {{ request()->routeIs('report') ? 'text-orange-500 font-semibold' : '' }}">
             <!-- Report/Chart SVG -->
@@ -87,6 +88,7 @@
             </svg>
             Report
         </a>
+        
     </li>
 </ul>
 

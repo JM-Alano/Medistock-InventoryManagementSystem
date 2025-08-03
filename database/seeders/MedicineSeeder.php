@@ -10,18 +10,16 @@ class MedicineSeeder extends Seeder
 {
     public function run()
     {
-        for ($i = 1; $i <= 10; $i++) {
-            DB::table('medicines')->insert([
-                'firstname'      => 'First' . $i,
-                'middlename'     => 'Middle' . $i,
-                'lastname'       => 'Last' . $i,
-                'medicine_name'  => 'Medicine' . $i,
-                'brand_name'     => 'Brand' . $i,
-                'dosage'         => rand(100, 500) . 'mg',
-                'catergory'      => 'General',
-                'created_at'     => now(),
-                'updated_at'     => now(),
-            ]);
-        }
+        // for ($i = 1; $i <= 10; $i++) {
+        //     DB::table('medicines')->insert([
+        //         'id'             => $i,
+        //         'medicine_name'  => 'Medicine' . $i,
+        //         'brand_name'     => 'Brand' . $i,
+        //         'dosage'         => rand(100, 500) . 'mg',
+        //         'catergory'      => 'General',
+        //         'created_at'     => now(),
+        //         'updated_at'     => now(),
+        //     ]);
+        // }
     }
 }

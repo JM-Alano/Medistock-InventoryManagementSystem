@@ -23,8 +23,8 @@ class DatabaseSeeder extends Seeder
         // ]);
 
     
-        $this->call(MedicineSeeder::class);
-
+        // $this->call(MedicineSeeder::class);
+        $this->call(UserSeeder::class);
 
     }
     

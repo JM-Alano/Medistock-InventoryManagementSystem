@@ -8,11 +8,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+//  Routes admin
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'role:admin'])->name('dashboard');
 
-Route::get('/medicine', [MedicineController::class, 'index'])->middleware(['auth', 'verified'])->name('medicine');
+Route::get('/medicine', [MedicineController::class, 'index'])->middleware(['auth', 'role:admin'])->name('medicine');
 
 Route::get('/batch-inventory', function (){
     return view('batch-inventory');
@@ -35,9 +37,18 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-
-
+    Route::post('/medicines', [MedicineController::class, 'store'])->name('medicines.store');
+    
 
 });
+
+
+Route::get('/medicines/search', [MedicineController::class, 'search'])->name('medicines.search');
+
+
+// Routes user
+Route::get('/user/dashboard', function () {
+    return view('user');
+})->middleware(['auth', 'role:user'])->name('user.dashboard');
 
 require __DIR__.'/auth.php';

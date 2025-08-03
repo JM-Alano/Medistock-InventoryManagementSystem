@@ -40,7 +40,7 @@
 
                 <!-- Page Content -->
                 <main>
-                    {{ $slot }}
+                    <h1>Jenmar</h1>
                         
                   
                 </main>

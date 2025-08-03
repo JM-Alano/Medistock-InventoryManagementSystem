@@ -28,7 +28,7 @@ export default {
           accent: {
             DEFAULT: '#facc15',    // yellow-400: soft attention
             light: '#fef9c3',      // yellow-100: subtle highlight
-            dark: '#ddb100ff',       // yellow-700: warm warning
+            dark: '#b1900fff',       // yellow-700: warm warning
           },
           button: {
             primary: '#ff9100ff',    // green main
