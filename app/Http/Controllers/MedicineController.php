@@ -27,20 +27,20 @@ class MedicineController extends Controller
 
     return redirect()->route('medicine')->with('success', 'Medicine added successfully.');
 }
-  public function search(Request $request)
+   
+public function search(Request $request)
 {
     $query = $request->input('query');
 
-    $medicines = Medicine::where('medicine_name', 'like', "%$query%")
-        ->orWhere('brand_name', 'like', "%$query%")
-        ->orWhere('dosage', 'like', "%$query%")
-        ->orWhere('category', 'like', "%$query%")
-        ->paginate(10);
+    $medicines = Medicine::where('medicine_name', 'like', "%{$query}%")
+        ->orWhere('brand_name', 'like', "%{$query}%")
+        ->orWhere('dosage', 'like', "%{$query}%")
+        ->orWhere('catergory', 'like', "%{$query}%")
+        ->orderBy('medicine_name')
+        ->get();
 
-    return response()->json([
-        'table' => view('profile.partials.medicine-table-body', compact('medicines'))->render(),
-    ]);
+    $html = view('profile.partials.medicine-table-body', compact('medicines'))->render();
+
+    return response()->json(['table' => $html]);
 }
-
-
 }

@@ -43,9 +43,8 @@ Route::middleware('auth')->group(function () {
 });
 
 
+
 Route::get('/medicines/search', [MedicineController::class, 'search'])->name('medicines.search');
-
-
 // Routes user
 Route::get('/user/dashboard', function () {
     return view('user');
