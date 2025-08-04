@@ -43,4 +43,12 @@ public function search(Request $request)
 
     return response()->json(['table' => $html]);
 }
+public function destroy($id)
+{
+    $medicine = Medicine::findOrFail($id);
+    $medicine->delete();
+
+  return response()->json(['success' => true, 'message' => 'Medicine deleted successfully.']);
+}
+
 }

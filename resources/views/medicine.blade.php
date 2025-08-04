@@ -68,7 +68,7 @@
 <!-- Scripts for search-->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-     $(document).ready(function () {
+        $(document).ready(function () {
         let debounceTimer;
 
         $('#search').on('keyup', function () {
@@ -102,4 +102,6 @@
     });
 </script>
 
+{{-- DELETE AJAX --}}
+@vite('resources/js/ajax_delete.js')
 </x-app-layout>
