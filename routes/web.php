@@ -38,6 +38,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::post('/medicines', [MedicineController::class, 'store'])->name('medicines.store');
+    Route::put('/medicines/{id}', [MedicineController::class, 'update'])->name('medicines.update');
     Route::get('/medicines/search', [MedicineController::class, 'search'])->name('medicines.search');
     Route::delete('/medicines/{id}', [MedicineController::class, 'destroy'])->name('medicines.destroy');
 });

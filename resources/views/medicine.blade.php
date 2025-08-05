@@ -5,6 +5,19 @@
         </h2>
     </x-slot>
 
+    {{-- SUCCESSFULL MESSAGE UPDATE --}}
+        @if(session('success'))
+            <div
+                x-data="{ show: true }"
+                x-init="setTimeout(() => show = false, 3000)" {{-- 3000ms = 3 seconds --}}
+                x-show="show"
+                x-transition
+                class="bg-green-100 text-green-800 px-4 py-2 m-4 rounded mb-4"
+            >
+                {{ session('success') }}
+            </div>
+        @endif
+
     <div class="py-10" x-data="{ showModal: false }">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -14,7 +27,7 @@
                 <button @click="showModal = true" class="bg-button-primary text-white px-4 py-2 rounded-md hover:bg-button-hover transition">
                     + Add Medicine
                 </button>
-
+                     
                 <input
                     type="text"
                     id="search"
@@ -61,8 +74,43 @@
             </div>
         </div>
 
-        <!-- Modal -->
-        <x-add-modal showModal="showModal" />
+        <!-- Modal ADD-->
+        <x-show-modal :showModal="'showModal'" :action="route('medicines.store')" title="Add Item" submitText="Create">
+           <div class="grid grid-cols-2 gap-4">
+                <div class="mb-4">
+                    <label class="block text-gray-700">Medicine</label>
+                    <input type="text" name="medicine_name"
+                        placeholder="e.g., Paracetamol"
+                        class="w-full border-accent-dark px-3 py-2 rounded mt-1 focus:outline-none focus:ring-2 focus:ring-accent">
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-gray-700">Brand</label>
+                    <input type="text" name="brand_name"
+                        placeholder="e.g., BrandName"
+                        class="w-full border-accent-dark px-3 py-2 rounded mt-1 focus:outline-none focus:ring-2 focus:ring-accent">
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-gray-700">Dosage</label>
+                    <input type="text" name="dosage"
+                        placeholder="e.g., 500mg"
+                        class="w-full border-accent-dark px-3 py-2 rounded mt-1 focus:outline-none focus:ring-2 focus:ring-accent">
+                </div>
+                <div class="mb-4 col-span-2">
+                    <label class="block text-gray-700">Category</label>
+                    <select name="catergory"
+                        class="w-full border-accent-dark px-3 py-2 rounded mt-1 focus:outline-none focus:ring-2 focus:ring-accent">
+                        <option value="" disabled selected>Select category</option>
+                        <option value="Antibiotic">Antibiotic</option>
+                        <option value="Analgesic">Analgesic</option>
+                        <option value="Antiviral">Antiviral</option>
+                        <option value="Vaccine">Vaccine</option>
+                    </select>
+                </div>
+            </div>
+     </x-show-modal>
+     
     </div>
 
 <!-- Scripts for search-->

@@ -51,4 +51,19 @@ public function destroy($id)
   return response()->json(['success' => true, 'message' => 'Medicine deleted successfully.']);
 }
 
+public function update(Request $request, $id)
+{
+    $medicine = Medicine::findOrFail($id);
+
+    $validated = $request->validate([
+        'medicine_name' => 'required|string|max:255',
+        'brand_name' => 'nullable|string|max:255',
+        'dosage' => 'nullable|string|max:255',
+        'category' => 'nullable|string|max:255',
+    ]);
+
+    $medicine->update($validated);
+
+    return redirect()->back()->with('success', 'Medicine updated successfully!');
+}
 }
